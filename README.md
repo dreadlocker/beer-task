@@ -1,4 +1,5 @@
 # beer-task
+# Project is live here: https://dreadlocker.github.io/beer-task-live/
 ## How to start the project
 * open terminal
 * git clone https://github.com/dreadlocker/beer-task
