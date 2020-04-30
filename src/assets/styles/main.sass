@@ -1,0 +1,152 @@
+@import "./_variables.sass"
+
+html, body, #app
+  width: 100%
+  height: 100%
+
+// App START
+body
+  margin: 0
+#app
+  font-family: Avenir, Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+#nav
+  height: $nav-height
+  display: flex
+  justify-content: space-between
+  background-color: $nav-background-color
+  padding: $nav-padding
+  a
+    text-decoration: none
+    color: white
+    &.router-link-exact-active
+      color: black
+.logo
+  display: flex
+  align-items: center
+  color: white
+@media (max-width: $logo-max-width)
+  .logo
+    font-size: 20px
+@media (min-width: calc(#{$logo-max-width} + 1px))
+  .logo
+    font-size: 33px
+@media (min-width: calc(#{$nav-right-side} + 1px))
+  .margin-right
+    margin-right: 20px
+.nav-right-side
+  display: flex
+  align-items: center
+@media (max-width: 606px)
+  .nav-right-side
+    flex-direction: column
+    justify-content: center
+    align-items: flex-end
+// App END
+
+// Home START
+.search-holder
+  display: flex
+  justify-content: center
+  margin: 30px 0 0
+.search-input
+  width: 40%
+  height: $input-height
+  font-size: 18px
+  padding: 0 5px
+  border: $border-dimensions solid $border-color
+  border-radius: $border-radius 0 0 $border-radius
+.search-btn
+  width: $search-btn-width
+  height: calc( #{$input-height} + (#{$border-dimensions} * 2) )
+  color: white
+  font-size: 18px
+  border: none
+  border-radius: 0 $border-radius $border-radius 0
+.btn-active
+  background-color: #3273DC
+.btn-disabled
+  background-color: gray
+@keyframes rotate-circle
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+.loader
+  border: 2px solid $border-color
+  border-right-color: $nav-background-color
+  border-radius: 50%
+  animation: rotate-circle 1s linear infinite
+.loader-big
+  width: 100px
+  height: 100px
+  margin: 20px auto
+.loader-small
+  width: 15px
+  height: 15px
+  margin: auto
+.beers-holder
+  display: flex
+  flex-wrap: wrap
+@media (max-width: $two-beer-windows-width)
+  .beers-holder
+    justify-content: center
+    margin: 10px 0 10px
+@media (min-width: calc(#{$two-beer-windows-width} + 1px))
+  .beers-holder
+    justify-content: space-between
+    margin: 10px $beers-holder-margin-left-right 10px
+// Home END
+  
+// Favorites START
+.favorite-empty
+  margin-top: 10px
+// Favorites END
+
+// BaseBeerWindow START
+.single-beer-window-holder
+  width: fit-content
+  border: 1px solid $border-color
+  border-radius: $border-radius
+  margin-bottom: 20px
+  box-shadow: 0 1px $border-color
+@media (max-width: 327px)
+  .single-beer-window-holder
+    padding: 5px
+@media (min-width: 328px)
+  .single-beer-window-holder
+    padding: $single-beer-window-holder-padding
+.beer-favorite-section
+  color: $nav-background-color
+  font-weight: bold
+  font-size: 20px
+  text-align: right
+.favorite-icon
+  cursor: pointer
+  user-select: none
+.flex
+  display: flex
+  justify-content: space-between
+.beer-img
+  width: $beer-img-width
+  height: 90px
+  margin-right: $beer-img-margin-right
+.beer-info
+  width: $beer-info-width
+  text-align: left
+  line-height: 24px
+.beer-name
+  font-weight: bold
+// BaseBeerWindow END
+
+// RandomBeer START
+.screen-centered
+  width: 100%
+  height: calc( 100% - (#{$nav-padding} * 2) - #{$nav-height} )
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+// RandomBeer END
