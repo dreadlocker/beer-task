@@ -1,5 +1,5 @@
 //TYPES_NODE
-export const BEERS_ARRAY = "store/BEERS_ARRAY";
+export const BEERS = "store/BEERS";
 
 //ACTIONS_NODE
-export const ACTION_BEERS_ARRAY = "store/ACTION_BEERS_ARRAY";
+export const ACTION_BEERS = "store/ACTION_BEERS";

@@ -1,10 +1,12 @@
 <template>
-  <h1 v-if="!favoriteBeersArray.length" class="favorite-empty">Favorites collection is empty</h1>
+  <h1 v-if="!favoriteBeers.length" class="favorite-empty">
+    Favorites collection is empty
+  </h1>
   <div v-else class="beers-holder">
     <BaseBeerWindow
-      v-for="(obj, index) in favoriteBeersArray"
+      v-for="(beer, index) in favoriteBeers"
       :key="index"
-      :beerObj="obj"
+      :beer="beer"
     />
   </div>
 </template>
@@ -16,15 +18,15 @@ import BaseBeerWindow from "@/components/BaseBeerWindow.vue";
 export default {
   name: "Favorites",
   components: {
-    BaseBeerWindow
+    BaseBeerWindow,
   },
   computed: {
     ...mapState({
-      beers_array: state => state.beers_array
+      beers: (state) => state.beers,
     }),
-    favoriteBeersArray() {
-      return this.beers_array.filter(obj => obj.favorite);
-    }
-  }
+    favoriteBeers() {
+      return this.beers.filter((beer) => beer.favorite);
+    },
+  },
 };
 </script>

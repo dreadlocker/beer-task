@@ -1,20 +1,22 @@
 <template>
   <div class="single-beer-window-holder">
     <div class="beer-favorite-section">
-      <span
-        @click="addOrRemoveFromFavorite"
-        class="favorite-icon"
-      >{{beerObj.favorite ? "&#9733;" : "&#9734;"}}</span>
+      <span @click="toggleFavorite" class="favorite-icon">{{
+        beer.favorite ? "&#9733;" : "&#9734;"
+      }}</span>
     </div>
 
     <div class="flex">
-      <img @click="playOpenBottleSound" :src="beerObj.image_url" class="beer-img">
+      <img
+        @click="playOpenBottleSound"
+        :src="beer.image_url"
+        class="beer-img"
+      />
       <div class="beer-info">
-        <div class="beer-name">{{beerObj.name}}</div>
-        <div class="beer-description">{{description}}</div>
+        <div class="beer-name">{{ beer.name }}</div>
+        <div class="beer-description">{{ description }}</div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -24,32 +26,33 @@ import { mapState } from "vuex";
 export default {
   name: "BaseBeerWindow",
   props: {
-    beerObj: {
+    beer: {
       type: Object,
-      required: true
+      required: true,
     },
   },
   computed: {
     ...mapState({
-      beers_array: state => state.beers_array
+      beers: (state) => state.beers,
     }),
     description() {
-      return `${this.beerObj.description.slice(0, 100)}...`;
-    }
+      return `${this.beer.description.slice(0, 100)}...`;
+    },
   },
   methods: {
-    addOrRemoveFromFavorite() {
-      const currentBeerObj = this.beers_array.filter(obj => obj.id === this.beerObj.id)[0];
-      let favoriteBool = currentBeerObj["favorite"];
-      return currentBeerObj["favorite"] = !favoriteBool;
+    toggleFavorite() {
+      const currentBeer = this.beers.filter(
+        (beer) => beer.id === this.beer.id
+      )[0];
+      return (currentBeer["favorite"] = !currentBeer["favorite"]);
     },
     playOpenBottleSound() {
       return this.audio.play();
-    }
+    },
   },
   created() {
     const audioFilePath = require("@/assets/sound/open cap.mp3");
     this.audio = new Audio(audioFilePath);
-  }
+  },
 };
 </script>

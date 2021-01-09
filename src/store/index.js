@@ -6,16 +6,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    beers_array: []
+    beers: null
   },
   mutations: {
-    [types.BEERS_ARRAY]: (state, payload) => {
-      state.beers_array = payload;
+    [types.BEERS]: (state, payload) => {
+      state.beers = payload;
     }
   },
   actions: {
-    [types.ACTION_BEERS_ARRAY]({ commit }, payload) {
-      commit(types.BEERS_ARRAY, payload);
+    [types.ACTION_BEERS]({ commit }, payload) {
+      commit(types.BEERS, payload);
     }
   }
 });
